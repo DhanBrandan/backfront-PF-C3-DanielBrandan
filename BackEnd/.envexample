@@ -1,0 +1,4 @@
+PORT= # Elegir el PUERTO.  
+MONGO_URI= # Direccion de la host BD.
+DATABASE_NAME= # Nombre de  BD.
+JWT_SECRET= # Token.
