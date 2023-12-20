@@ -3,6 +3,7 @@ import { useContext, useRef,  } from "react"
 import { AuthContext } from "../providers/AuthProvider.jsx";
 import { Link, useNavigate } from "react-router-dom";
 import { API_URL } from "../utils/const.js";
+import  axios  from "axios"
 
 const Login = () => {
 
@@ -23,20 +24,18 @@ const Login = () => {
             email,
             password,
         }
-        const req = await fetch(`${API_URL}/user/login`, {
-
-        method: "POST",
-        body: JSON.stringify(user),
+        const req = await axios.post(`${API_URL}/user/login`, user, {
+        
         headers: {
             "Content-Type": "application/json",
         },
 });
     if(req.status !== 201   ) { 
         ref.current.reset()
-        return alert("Error al iniciar secion")
+        return alert("Error al iniciar sesion")
     }
-    const res = await req.json()
-    login(res)
+    
+    login(req.data)
   
     ref.current.reset()
     navigate('/')
@@ -51,7 +50,7 @@ const Login = () => {
             ref={ref}
             className="text-bg-secondary m-auto p-5 rounded-5"
             >
-            <h2 class="text-center">Login</h2> 
+            <h2 className="text-center">Login</h2> 
             <div className="mb-3">
                 <label  className="form-label">Ingresa Tu M@il</label>
                 <input type="email" className="form-control"  placeholder="Tu@Mail.com" name="email"/>

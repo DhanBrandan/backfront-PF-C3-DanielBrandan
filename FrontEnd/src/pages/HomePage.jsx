@@ -13,7 +13,7 @@ const HomePage = () => {
                 <img className="imagen-redondeada"src="./imagenes/Home.jpg" alt="" />
             </div>
 
-            <h1 class="textocentrado"> VIAJA VIVE SUEÑA </h1>
+            <h1 className="textocentrado"> VIAJA VIVE SUEÑA </h1>
         </div>
 
     );

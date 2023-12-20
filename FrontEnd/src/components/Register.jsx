@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { API_URL } from "../utils/const.js";
+import axios from "axios";
 
 const Register = () => {
 
@@ -22,10 +23,8 @@ const Register = () => {
             username,
             password,
         }
-        const req = await fetch(`${API_URL}/user/register`, {
-
-            method: "POST",
-            body: JSON.stringify(user),
+        const req = await axios.post(`${API_URL}/user/register`, user, {
+            
             headers: {
                 "Content-Type": "application/json",
             },
@@ -45,7 +44,7 @@ const Register = () => {
             ref={ref}
             className="text-bg-secondary m-auto p-5 rounded-5"
             >
-            <h2 class= "text-center">Registrar</h2>              
+            <h2 className= "text-center">Registrar</h2>              
             <input className="form-control m-3" type="text" placeholder="Tu Usuario" name="username"/>
             <input className="form-control m-3" type="email" placeholder="TuMail@gmail.com" name="email"/>
             <input className="form-control m-3" type="password" placeholder="Tu Contraseña" name="password"/>

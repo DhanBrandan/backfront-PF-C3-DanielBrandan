@@ -1,4 +1,4 @@
-PORT= # Elegir el PUERTO.  
-MONGO_URI= # Direccion de la host BD.
+PORT= # Elegir el PUERTO Express.  
+MONGO_URI= # Direccion de la host BD y el PUERTO
 DATABASE_NAME= # Nombre de  BD.
 JWT_SECRET= # Token.

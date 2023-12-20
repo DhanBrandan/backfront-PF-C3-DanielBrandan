@@ -4,8 +4,8 @@ import { verifyValidations } from '../middlewares/verify.validations.js'
 
 const validatorCreatePost = [
     body('title')
-    .notEmpty().withMessage('El Title es un campo Obligatorio')
-    .isString().withMessage('El Title debe ser un String')
+    .notEmpty().withMessage('El TITULO es un campo Obligatorio')
+    .isString().withMessage('El TITULO debe ser un String')
     .isLength({min:4 , max:20}).withMessage('El Title debe tener entre 4 y 20 Caracteres'),
 
     body('description')
@@ -22,9 +22,9 @@ const validatorCreatePost = [
 
 const validatorEditPost = [
     body('title')
-    .notEmpty().withMessage('El Title es un campo Obligatorio')
-    .isString().withMessage('El Title debe ser un String')
-    .isLength({min:4 , max:20}).withMessage('El Title debe tener entre 4 y 20 Caracteres'),
+    .notEmpty().withMessage('El TITULO es un campo Obligatorio')
+    .isString().withMessage('El TITULO debe ser un String')
+    .isLength({min:4 , max:20}).withMessage('El TITULO debe tener entre 4 y 20 Caracteres'),
 
     body('description')
     .notEmpty().withMessage('El Campo Descripcion no puede estar vacio')

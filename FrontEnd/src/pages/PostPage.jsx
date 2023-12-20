@@ -3,6 +3,7 @@ import { Link} from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider.jsx";
 import { Post } from "../components/Post.jsx";
 import { API_URL } from "../utils/const.js";
+import  axios  from "axios"
 
 const PostPage = () => {
 
@@ -12,9 +13,8 @@ const PostPage = () => {
     const [search , setShearch] = useState("")
     const getPostList = () =>{
 
-            fetch(`${API_URL}/post`)
-            .then((res)=> res.json())
-            .then((data)=> setPostList(data))
+            axios.get(`${API_URL}/post`)
+            .then((res)=> setPostList(res.data))
 
     }
     useEffect (() => { 
@@ -22,6 +22,7 @@ const PostPage = () => {
     },[])
 
     useEffect (()=>{
+        /* console.log(postList); */
         const filtrar = postList.filter((post)=>{
             return post.title.toLowerCase().includes(search.toLowerCase().trim())
         })

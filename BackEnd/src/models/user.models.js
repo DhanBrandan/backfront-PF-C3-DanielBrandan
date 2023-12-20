@@ -38,7 +38,7 @@ const UserSchema = new Schema({
 }
 )
 
-    // Se encripta la contraseña guardar el nuevo usuario 
+// Se encripta la contraseña guardar el nuevo USER
 UserSchema.pre('save', async function(next){
 
     if(!this.isModified('password'))

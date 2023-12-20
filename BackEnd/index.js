@@ -15,13 +15,13 @@ app.use(morgan("dev"))
 app.use(cors())
 app.use(helmet())
 
-// Body
+// B o d y
 app.use(express.json())
 
-// Form
+// F o r m
 app.use(express.urlencoded({extended: false}))
 
-//Routes
+//R o u t e s
 app.use('/comment' , commentRouter)    
 app.use('/post' ,  postRouter)    
 app.use('/user' , userRouter)    

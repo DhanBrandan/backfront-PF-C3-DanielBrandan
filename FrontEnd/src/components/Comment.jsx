@@ -4,14 +4,14 @@ import { BsFillTrash3Fill } from "react-icons/bs"
 import { alertDeleteComment, alertDeleteCommentOk } from "../utils/options.SweetAlert.js"
 import Swal from "sweetalert2"
 import { API_URL } from "../utils/const.js"
+import  axios  from "axios"
 
 const Comments = ({description , imageURL, createdAt, username, commentId, postId,autorComment, refresh }) =>{
     const { auth } = useContext(AuthContext) 
     const isAutor = auth?.user._id
 
     const commentDelete = async (postId , commentId) =>{
-        return  await fetch(`${API_URL}/comment/${postId}/${commentId}`,{
-                method:"DELETE",
+        return  await axios.delete(`${API_URL}/comment/${postId}/${commentId}`,{
                 headers: {
                     Authorization: auth.token
                 }

@@ -6,6 +6,7 @@ import { API_URL } from "../utils/const.js";
 import { Link } from "react-router-dom";
 import { alertCreateComment, alertCreateCommentOk, alertDelete, alertDeleteOk } from "../utils/options.SweetAlert.js";
 import { Comments } from "./Comment.jsx";
+import  axios  from "axios"
 
 const Post = ( {postId, title, description, imageURL, createdAt, autor , refresh ,comments, autorId , avatar} ) => {
     const ref = useRef(null)
@@ -13,8 +14,7 @@ const Post = ( {postId, title, description, imageURL, createdAt, autor , refresh
     const [ commentList , setCommentList ] = useState([])
 
     const handleDelete = async (postId) =>{
-        return  await fetch(`${API_URL}/post/${postId}`,{
-                method:"DELETE",
+        return  await axios.delete(`${API_URL}/post/${postId}`,{
                 headers: {
                     Authorization: auth.token
                 }
@@ -30,13 +30,11 @@ const Post = ( {postId, title, description, imageURL, createdAt, autor , refresh
             
         }
         
-        fetch(`${API_URL}/comment/${postId}`,{
-            method: "POST",
+        axios.post(`${API_URL}/comment/${postId}`, data,{
             headers: {
                 Authorization: auth.token,
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(data)
             
         })
         .then((res)=> {
@@ -53,15 +51,16 @@ const Post = ( {postId, title, description, imageURL, createdAt, autor , refresh
 
     const getCommentList = () =>{
 
-            fetch(`${API_URL}/comment/${postId}`)
-            .then((res)=> res.json())
-            .then((data)=> setCommentList(data))
+            axios.get(`${API_URL}/comment/${postId}`)
+            .then((res)=> setCommentList(res.data))
 
     }
     useEffect (() => { 
         getCommentList()
     },[])
 
+    /* console.log(auth); */
+    
     const isAutor = auth?.user._id
     
     const formatoFecha = new Date(createdAt).toLocaleDateString('es-ES', { year: 'numeric', month: '2-digit', day: '2-digit' });

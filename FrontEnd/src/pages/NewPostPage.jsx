@@ -4,6 +4,7 @@ import { AuthContext } from "../providers/AuthProvider.jsx"
 import { useNavigate } from "react-router-dom"
 import Swal from "sweetalert2"
 import { alertCreatePost, alertCreatePostOk } from "../utils/options.SweetAlert.js"
+import  axios  from "axios"
 
 const NewPostPage = () => {
     const navigate = useNavigate()
@@ -19,13 +20,11 @@ const NewPostPage = () => {
             imageURL: formData.get("imageURL")
         }
 
-        fetch(`${API_URL}/post/newpost`,{
-            method: "POST",
+        axios.post(`${API_URL}/post/newpost`, data, {
             headers: {
                 Authorization: auth.token,
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(data)
             
         })
         .then((res)=> {

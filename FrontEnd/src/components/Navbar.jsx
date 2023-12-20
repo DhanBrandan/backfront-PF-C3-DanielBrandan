@@ -10,9 +10,7 @@ const Navbar = () => {
 <nav className="navbar navbar-expand-lg bg-body-tertiary sticky-top" data-bs-theme="dark">
 <div className="container">
   
-    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span className="navbar-toggler-icon"></span>
-    </button>
+    
     <div className="collapse navbar-collapse" id="navbarNav">
       <ul className="navbar-nav">
         <li className="nav-item">
@@ -30,9 +28,9 @@ const Navbar = () => {
     </div>
 
     <button 
-        onClick={auth? logout : ""}
+        onClick={auth? logout : ()=> false }
         className={`btn ${auth? "btn btn-danger btn-sm" : "btn btn-success btn-sm"} `}
-        type="submit">{auth? "LOGOUT" : <NavLink className="nav-link " aria-current="page" to="/user/login">LOGIN</NavLink>}
+        type="button">{auth? "LOGOUT" : <NavLink className="nav-link " aria-current="page" to="/user/login">LOGIN</NavLink>}
     </button>
         
 </div>
