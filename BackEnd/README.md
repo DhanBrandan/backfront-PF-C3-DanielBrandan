@@ -9,6 +9,8 @@ Necesitarás tener MongoDB instalado y ejecutar los servicios mongod y mongocomp
 Instalar dependencias con el siguiente comando:
 npm install
 
+Escribir en la terminal cd BackEnd
+
 Ejecutar la aplicación con el siguiente comando:
 npm run dev
 
